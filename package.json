@@ -2,7 +2,7 @@
   "name": "leaflet-multi-style",
   "version": "1.0.0",
   "description": "quickly add multiple styles to GeoJSON data",
-  "main": "index.js",
+  "main": "multi-style-layer.js",
   "keywords": ["leaflet", "geojson", "style"],
   "author": "Per Liedman <per@liedman.net>",
   "license": "ISC"
