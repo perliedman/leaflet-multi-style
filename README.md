@@ -1,6 +1,8 @@
 Leaflet Multi Style
 ===================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/perliedman/leaflet-multi-style.svg)](https://greenkeeper.io/)
+
 A plugin to quickly add multiple styles to the same GeoJSON data. [Demo](http://www.liedman.net/leaflet-multi-style).
 
 ## Using
