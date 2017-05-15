@@ -11,15 +11,6 @@
             filters: [yes, yes, yes]
         },
 
-        initialize: function(data, options) {
-            L.setOptions(this, options);
-            L.GeoJSON.prototype.initialize.call(this, data, this.options);
-        },
-
-        clearLayers: function() {
-            L.GeoJSON.prototype.clearLayers.apply(this, arguments);
-        },
-
         addData: function(data) {
             if (this.options.styles && !this._isAdding) {
                 this._isAdding = true;
