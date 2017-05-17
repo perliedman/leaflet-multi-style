@@ -23,6 +23,19 @@
                     }
                     L.GeoJSON.prototype.addData.call(this, data);
                 }, this));
+
+
+                this.options.pointToLayers.forEach(L.bind(function(pointToLayer, i) {
+                    this.options.pointToLayer = pointToLayer;
+                    if (this.options.filters && this.options.filters[i]) {
+                        this.options.filter = this.options.filters[i];
+                    }
+                    L.GeoJSON.prototype.addData.call(this, data);
+                }, this));
+
+
+
+
                 this.options.style = styler;
                 this.options.filter = filter;
                 this._isAdding = false;
