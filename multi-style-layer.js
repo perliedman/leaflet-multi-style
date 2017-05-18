@@ -8,21 +8,35 @@
                 {color: 'white', opacity: 0.8, weight: 6},
                 {color: '#444', opacity: 1, weight: 2}
             ],
+            pointToLayer: function (feature, latlng) {
+                return null
+            },
             filters: [yes, yes, yes]
         },
 
         addData: function(data) {
-            if (this.options.styles && !this._isAdding) {
+            if (!this._isAdding) {
                 this._isAdding = true;
-                var styler = this.options.style,
-                    filter = this.options.filter;
-                this.options.styles.forEach(L.bind(function(style, i) {
-                    this.options.style = style;
-                    if (this.options.filters && this.options.filters[i]) {
-                        this.options.filter = this.options.filters[i];
-                    }
-                    L.GeoJSON.prototype.addData.call(this, data);
-                }, this));
+                if (this.options.styles) {
+                    var styler = this.options.style,
+                        filter = this.options.filter;
+                    this.options.styles.forEach(L.bind(function(style, i) {
+                        this.options.style = style;
+                        if (this.options.filters && this.options.filters[i]) {
+                            this.options.filter = this.options.filters[i];
+                        }
+                        L.GeoJSON.prototype.addData.call(this, data);
+                    }, this));
+                }
+                if (this.options.pointToLayers) {
+                    this.options.pointToLayers.forEach(L.bind(function(pointToLayer, i) {
+                        this.options.pointToLayer = pointToLayer;
+                        if (this.options.filters && this.options.filters[i]) {
+                            this.options.filter = this.options.filters[i];
+                        }
+                        L.GeoJSON.prototype.addData.call(this, data);
+                    }, this));
+                }
                 this.options.style = styler;
                 this.options.filter = filter;
                 this._isAdding = false;
