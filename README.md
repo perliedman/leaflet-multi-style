@@ -17,5 +17,27 @@ var vectorLayer = L.geoJson.multiStyle(geojson, {
 }).addTo(map);
 ```
 
+For point features, the array `pointToLayers` replaces `pointToLayer`:
+
+```js
+var vectorLayer = L.geoJson.multiStyle(geojson, {
+    pointToLayers: [
+        function (feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: 8.0,
+                fillColor: 'yellow'
+            })
+        },
+        function (feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: 4.0,
+                fillColor: 'red'
+            })
+        }
+    ]
+}).addTo(map);
+```
+
+
 Similarily, there is also an option `filters` that works just like the original option `filter`, but is called for
 each style in `styles`.
