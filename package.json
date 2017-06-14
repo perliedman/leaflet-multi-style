@@ -1,6 +1,6 @@
 {
   "name": "leaflet-multi-style",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "quickly add multiple styles to GeoJSON data",
   "main": "multi-style-layer.js",
   "keywords": ["leaflet", "geojson", "style"],
